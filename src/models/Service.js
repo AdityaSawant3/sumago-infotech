@@ -1,10 +1,20 @@
-iconst mongoose = require('mongoose');
+const db = require('../config/db');
 
-const serviceSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  icon: String
-});
+const Service = {
+  getAll: async () => {
+    const [rows] = await db.execute('SELECT * FROM services');
+    return rows;
+  },
 
-module.exports = mongoose.model('Service', serviceSchema);
+  create: async (data) => {
+    const { title, description, icon } = data;
+    const [result] = await db.execute(
+      'INSERT INTO services (title, description, icon) VALUES (?, ?, ?)',
+      [title, description, icon]
+    );
+    return result;
+  }
+};
+
+module.exports = Service;
 

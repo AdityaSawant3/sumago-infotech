@@ -1,0 +1,28 @@
+{
+  "name": "sumago-infotech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdityaSawant3/sumago-infotech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AdityaSawant3/sumago-infotech/issues"
+  },
+  "homepage": "https://github.com/AdityaSawant3/sumago-infotech#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "mysql2": "^3.16.0",
+    "nodemon": "^3.1.11"
+  }
+}

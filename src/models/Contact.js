@@ -1,11 +1,20 @@
-const mongoose = require('mongoose');
+const db = require('../config/db');
 
-const contactSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String,
-  createdAt: { type: Date, default: Date.now }
-});
+const Contact = {
+  create: async (data) => {
+    const { name, email, message } = data;
+    const [result] = await db.execute(
+      'INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)',
+      [name, email, message]
+    );
+    return result;
+  },
 
-module.exports = mongoose.model('Contact', contactSchema);
+  getAll: async () => {
+    const [rows] = await db.execute('SELECT * FROM contacts');
+    return rows;
+  }
+};
+
+module.exports = Contact;
 
