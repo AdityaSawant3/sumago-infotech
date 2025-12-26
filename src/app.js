@@ -1,11 +1,8 @@
 const express = require('express');
 const path = require('path');
-const connectDB = require('./config/db');
+const db = require('./config/db'); // ✅ use pool
 
 const app = express();
-
-// Database
-connectDB();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
