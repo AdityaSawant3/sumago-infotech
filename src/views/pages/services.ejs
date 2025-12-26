@@ -1,0 +1,16 @@
+<h1>Our Services</h1>
+
+<ul>
+  <% if (services.length > 0) { %>
+    <% services.forEach(service => { %>
+      <li>
+        <h3><%= service.title %></h3>
+        <p><%= service.description %></p>
+        <p>Icon: <%= service.icon %></p>
+      </li>
+    <% }) %>
+  <% } else { %>
+    <li>No services found.</li>
+  <% } %>
+</ul>
+

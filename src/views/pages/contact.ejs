@@ -1,0 +1,16 @@
+<h1>Contacts</h1>
+
+<ul>
+  <% if (contacts.length > 0) { %>
+    <% contacts.forEach(contact => { %>
+      <li>
+        <p>Name: <%= contact.name %></p>
+        <p>Email: <%= contact.email %></p>
+        <p>Message: <%= contact.message %></p>
+      </li>
+    <% }) %>
+  <% } else { %>
+    <li>No contacts found.</li>
+  <% } %>
+</ul>
+

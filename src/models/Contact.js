@@ -1,6 +1,11 @@
+// src/models/Contact.js (MySQL version)
 const db = require('../config/db');
 
 const Contact = {
+  getAll: async () => {
+    const [rows] = await db.execute('SELECT * FROM contacts'); // <-- plural
+    return rows;
+  },
   create: async (data) => {
     const { name, email, message } = data;
     const [result] = await db.execute(
@@ -8,11 +13,6 @@ const Contact = {
       [name, email, message]
     );
     return result;
-  },
-
-  getAll: async () => {
-    const [rows] = await db.execute('SELECT * FROM contacts');
-    return rows;
   }
 };
 
