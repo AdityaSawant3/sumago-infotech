@@ -1,16 +1,43 @@
-<h1>Contacts</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    table { width: 80%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1><%= title %></h1>
 
-<ul>
-  <% if (contacts.length > 0) { %>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Created At</th>
+    </tr>
     <% contacts.forEach(contact => { %>
-      <li>
-        <p>Name: <%= contact.name %></p>
-        <p>Email: <%= contact.email %></p>
-        <p>Message: <%= contact.message %></p>
-      </li>
+      <tr>
+        <td><%= contact.id %></td>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.message %></td>
+        <td><%= new Date(contact.createdAt).toLocaleString() %></td>
+      </tr>
     <% }) %>
-  <% } else { %>
-    <li>No contacts found.</li>
-  <% } %>
-</ul>
+  </table>
+
+  <h2>Add New Contact</h2>
+  <form action="/contact" method="POST">
+    <input type="text" name="name" placeholder="Name" required><br><br>
+    <input type="email" name="email" placeholder="Email" required><br><br>
+    <textarea name="message" placeholder="Message" required></textarea><br><br>
+    <button type="submit">Add Contact</button>
+  </form>
+</body>
+</html>
 
