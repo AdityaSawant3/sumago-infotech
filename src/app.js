@@ -1,12 +1,17 @@
 const express = require('express');
 const path = require('path');
-const db = require('./config/db'); // ✅ use pool
+const db = require('./config/db');
 
 const app = express();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// ✅ Health check (ADD THIS)
+app.get('/health', (req, res) => {
+  res.status(200).send('healthy');
+});
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
